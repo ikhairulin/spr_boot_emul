@@ -26,7 +26,7 @@
    ```
    mvn spring-boot:run
    ```
-4. Так же если нет Maven можно скачать скомпилированный jar-файл по ссылке:
+Либо если в системе не установлен Maven можно скачать скомпилированный jar-файл по ссылке:
 https://drive.google.com/file/d/1u5q3de3V55RnOmsqaWR-1slJ8tE8bC0E/view?usp=sharing
 и запустить программу командой
    ```
@@ -37,7 +37,7 @@ https://drive.google.com/file/d/1u5q3de3V55RnOmsqaWR-1slJ8tE8bC0E/view?usp=shari
 
 6. Прервать работу программы можно комбинацией клавиш CTRL+C (либо cmd + c на маке)
 
-## Методы API
+## Методы API (Адрес)
 
 ### GET /ok (http://localhost:8080/ok)
 
