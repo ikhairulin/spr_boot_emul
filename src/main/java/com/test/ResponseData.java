@@ -1,4 +1,4 @@
-package com.example.test;
+package com.test;
 
 public class ResponseData {
     private String message;
