@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Main {
 
    public static void main(String[] args) {
+
       SpringApplication.run(Main.class, args);
    }
 
@@ -22,7 +23,7 @@ public class Main {
       return "Hello World!";
    }
 
-   @GetMapping("/test")
+
    public String test() {
       return "Привет! Я умею складывать целые числа. Пришли мне данные методом POST в формате json по типу " +
               "{\"name\": \"John Silver\", \"first_num\": \"5\", \"second_num\": \"2\"}" +
@@ -38,4 +39,18 @@ public class Main {
       return response;
    }
 
+   @RestController
+   static class MessageController {
+      private final KafkaProducer kafkaProducer;
+
+      public MessageController(KafkaProducer kafkaProducer) {
+         this.kafkaProducer = kafkaProducer;
+      }
+
+      @PostMapping("/message")
+      public void sendMessage(@RequestBody String message) {
+         kafkaProducer.sendMessage("my_topic", message);
+      }
+
+   }
 }
