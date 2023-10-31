@@ -37,7 +37,8 @@
 
 5. Прервать работу программы можно комбинацией клавиш CTRL+C (либо cmd + c на маке).
 
-## Методы API (Адрес)
+## Методы API 
+Метод / (Адрес)
 
 ### GET /ok (http://localhost:8080/ok)
 
@@ -66,3 +67,19 @@
   "message": "message": "Здравствуйте, John! Сумма ваших чисел 60"
 }
 ```
+
+## Запуск и работа с программным комплексом Kafka с использованием контейнеров docker
+1. Запускаем командой *docker-compose up* файл docker-compose.yml
+2. Будут скачаны и запущены контейнеры с zookeeper, kafka и kowl (как элемент UI)
+3. Командой docker exec -it <имя контейнера с kafka> bash переходим в командную строку внутри контейнера с kafka, в моем случае это
+   ```bash
+   docker exec -it spr_boot_emul-kafka-1 bash
+   ```
+4. Создаем топик командой 
+   ```bash
+   /opt/bitnami/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic my_topic
+   ```
+5. Для проверки работы топика можем отправить в него сообщение командой
+```bash
+echo "Hello World" | kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
+   ```
