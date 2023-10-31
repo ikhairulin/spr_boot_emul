@@ -80,6 +80,9 @@
    /opt/bitnami/kafka/bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic my_topic
    ```
 5. Для проверки работы топика можем отправить в него сообщение командой
-```bash
-echo "Hello World" | kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
-   ```
+    ```bash
+    echo "Hello World" | kafka-console-producer.sh --broker-list localhost:9092 --topic my_topic
+       ```
+6. Сообщение в топик можно отправить при помощи POST-запроса на адрес http://localhost:8080/message.
+JSON-объекты не обрабатываются. Система пока принимает только raw-строки. 
+Я для тестирования работы использовал Postman.
